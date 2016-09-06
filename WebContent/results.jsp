@@ -34,7 +34,7 @@
 			<td>${deck.deckName}</td>
 		</c:forEach>	
 	</table>
-	 
+	 <br>
 	 <div>
 	 <table><th>WHEELS</th>
 		<c:forEach var="wheel" items="${wheels}" >

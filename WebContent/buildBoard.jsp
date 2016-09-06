@@ -14,9 +14,9 @@
 <form action="GoToResultsJSP.do" method="POST">
 		Choose a deck: <br/>
 		<c:forEach var="deck" items="${decksByBrand}">
-		<%-- <input type="radio" name="url" value="${deck.url}" /><img src =${deck.url}><br/> --%>
 		 <input type="radio" name="deckName" value="${deck.deckName}" /><img src =${deck.url}><br/>
 		</c:forEach> 
+		<br>
 		Choose wheels:
 		<c:forEach var="wheel" items="${wheelsByRank}">
 			<input type="radio" 
@@ -38,6 +38,7 @@
 
 		<input type="submit" value="Submit" />
 	</form>
-
+<li><a href="buildForm.html">Go Back To Select Different Options</a></li> 
+<li><a href="index.html">Go To Start Page</a></li> 
 </body>
 </html>
