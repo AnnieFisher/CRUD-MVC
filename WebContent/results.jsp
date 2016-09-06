@@ -10,41 +10,57 @@
 <body>
 		<h2>Chosen Setup:</h2>
 		<table>
-		<tr><td>deck ${deck.deckName}</td></tr>
-		<tr><td>wheels ${wheel.wheelBrand}</td></tr>
-		<tr><td>bearings ${bearing.bearingBrand}</td></tr>	
-		<tr><td>trucks ${truck.truckBrand}</td></tr>
+		<tr><td><h3>DECK:</h3> ${deck.deckName}</td></tr>
+		<tr><td><h3>WHEELS:</h3> ${wheel.wheelBrand}</td></tr>
+		<tr><td><h3>BEARINGS:</h3> ${bearing.bearingBrand}</td></tr>	
+		<tr><td><h3>TRUCKS:</h3> ${truck.truckBrand}</td></tr>
 		</table>
 		<br/>
 		
-		<a href="removeSetup.do">remove an item from the list</a><br/> 
-		<a href="goToEditSetup.do">edit an item from the list</a><br/> 
-		<a href="buildForm.html">add another Setup</a><br/> 
-		<a href="index.html">Start Over</a><br/> 
+		<ul>
+		<li><a href="GoToViewAll.do">View all available decks</a><br/></li>
+		<li><a href="buildForm.html">Add another Setup</a></li> 
+		<li><a href="removeSetup.do">Remove an item from the List</a></li>
+		<li><a href="goToEditSetup.do">Edit an item from the List</a></li> 
+		<li><a href="index.html">Start Over</a></li> 
 		
+		</ul>
 		
-		<table>
-		<tr><td>
-		<c:forEach var="deck" items="${decks}">
-				  ${deck.deckName}
-		</c:forEach>
-		</td></tr>
-		<tr><td>
-		<c:forEach var="wheel" items="${wheels}">
-				  ${wheel.wheelBrand}
-		</c:forEach>
-		</td></tr>
-		<tr><td>
-		<c:forEach var="bearing" items="${bearings}">
-				  ${bearing.bearingBrand}
-		</c:forEach>
-		</td></tr>
-		<tr><td>
-		<c:forEach var="truck" items="${trucks}">
-				  ${truck.truckBrand}
-		</c:forEach>
-		</td></tr>	
-		</table>
+	    <table><th>DECKS</th>
+		<c:forEach var="deck" items="${decks}" varStatus="loop" >
+			<c:if test="${loop.index % 10 == 0}"> 
+			<tr><th>${deck.deckBrand}:</th></tr>
+			</c:if>
+			<td>${deck.deckName}</td>
+		</c:forEach>	
+	</table>
+	 
+	 <div>
+	 <table><th>WHEELS</th>
+		<c:forEach var="wheel" items="${wheels}" >
+			<tr><td> Rank: ${wheel.wheelRank} </td>
+			<td>${wheel.wheelBrand} </td></tr>
+		</c:forEach>	
+	</table>
+	</div>
+	<br>
+	<div>
+	<table><th>BEARINGS</th>
+		<c:forEach var="bearing" items="${bearings}" >
+			<tr><td> Rank: ${bearing.bearingRank} </td>
+			<td>${bearing.bearingBrand} </td></tr>
+		</c:forEach>	
+	</table>
+	</div>
+	<br>
+	<div>
+	<table><th>TRUCKS</th>
+		<c:forEach var="truck" items="${trucks}" >
+			<tr><td> Rank: ${truck.truckRank} </td>
+			<td>${truck.truckBrand} </td></tr>
+		</c:forEach>	
+	</table>
+	</div>
 	
 	
 </body>

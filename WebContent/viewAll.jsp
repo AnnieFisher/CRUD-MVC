@@ -10,19 +10,47 @@
 </head>
 <body>
 
-
-	<table>
-<c:forEach var="deck" items="${decks}" >
-<tr>
-<td>${deck.deckBrand}:</td>
-<td>${deck.deckName}</td>
-</tr>
-</c:forEach>
-</table>
- <a href="buildForm.html">Build SkateBoard</a><br/>
+    <table><th>DECKS</th>
+		<c:forEach var="deck" items="${decks}" varStatus="loop" >
+			<c:if test="${loop.index % 10 == 0}"> 
+			<tr><th>${deck.deckBrand}:</th></tr>
+			</c:if>
+			<td>${deck.deckName}</td>
+		</c:forEach>	
+	</table>
+	 
+	 <div>
+	 <table><th>WHEELS</th>
+		<c:forEach var="wheel" items="${wheels}" >
+			<tr><td> Rank: ${wheel.wheelRank} </td>
+			<td>${wheel.wheelBrand} </td></tr>
+		</c:forEach>	
+	</table>
+	</div>
+	<br>
+	<div>
+	<table><th>BEARINGS</th>
+		<c:forEach var="bearing" items="${bearings}" >
+			<tr><td> Rank: ${bearing.bearingRank} </td>
+			<td>${bearing.bearingBrand} </td></tr>
+		</c:forEach>	
+	</table>
+	</div>
+	<br>
+	<div>
+	<table><th>TRUCKS</th>
+		<c:forEach var="truck" items="${trucks}" >
+			<tr><td> Rank: ${truck.truckRank} </td>
+			<td>${truck.truckBrand} </td></tr>
+		</c:forEach>	
+	</table>
+	</div>
+	<ul>
+		<li><a href="removeSetup.do">remove an item from the list</a></li>
+		<li><a href="goToEditSetup.do">edit an item from the list</a></li> 
+		<li><a href="buildForm.html">add another Setup</a></li> 
+		<li><a href="index.html">Start Over</a></li> 
+		</ul>	
 		
-		
-	
-
 </body>
 </html>

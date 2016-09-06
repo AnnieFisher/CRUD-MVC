@@ -48,15 +48,15 @@ public class BuildController {
 		return truckList;
 	}
 
-	@RequestMapping(path = "GetDeckBrand.do", method = RequestMethod.GET)
-	public ModelAndView getByBrand(@RequestParam("deckBrand") String b) {
-		ModelAndView mv = new ModelAndView("deck.jsp");
-		mv.addObject("decksByBrand", buildDAO.getDecksByBrand(b));
-		return mv;
-	}
+//	@RequestMapping(path = "GetDeckBrand.do", method = RequestMethod.GET)
+//	public ModelAndView getByBrand(@RequestParam("deckBrand") String b) {
+//		ModelAndView mv = new ModelAndView("results.jsp");
+//		mv.addObject("decksByBrand", buildDAO.getDecksByBrand(b));
+//		return mv;
+//	}
 	@RequestMapping(path = "GetDeckURL.do", method = RequestMethod.GET)
 	public ModelAndView getByURL(@RequestParam("url") String b) {
-		ModelAndView mv = new ModelAndView("deck.jsp");
+		ModelAndView mv = new ModelAndView("results.jsp");
 		mv.addObject("decksByURL", buildDAO.getDecksByBrand(b));
 		return mv;
 	}
@@ -76,13 +76,13 @@ public class BuildController {
 	// return mv;
 	// }
 
-	@RequestMapping(path = "NewDeck.do", method = RequestMethod.POST)
-	public ModelAndView newDeck(Deck deck) {
-		buildDAO.addDeck(deck);
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("results.jsp");
-		return mv;
-	}
+//	@RequestMapping(path = "NewDeck.do", method = RequestMethod.POST)
+//	public ModelAndView newDeck(Deck deck) {
+//		buildDAO.addDeck(deck);
+//		ModelAndView mv = new ModelAndView();
+//		mv.setViewName("results.jsp");
+//		return mv;
+//	}
 
 	@RequestMapping(path = "GetWheelBrand.do", method = RequestMethod.POST)
 	public ModelAndView wheelsByBrand(@RequestParam("wheelBrand") String b) {
