@@ -5,13 +5,15 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" type="text/css" href="CSSStyle/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="CSSStyle/myCSS.css">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>Edit Board Setup</title>
 </head>
-<body>
+<body id="edit">
 
-
-		<form action="editSetup.do" method="POST">
+	<div>
+		<form id="editForm" action="editSetup.do" method="POST">
 		<select name="deckName">
 			<c:forEach var="deck" items="${decks}">
 				<option value="${deck.deckName}">${deck.deckName}</option>
@@ -42,7 +44,7 @@
 			
 			<input type="submit" value="edit setup" />
 			</form>
-
+	</div>
 
 </body>
 </html>

@@ -1,0 +1,63 @@
+@CHARSET "UTF-8";
+
+# boards {
+	padding: 1px;
+	border: 2px inset #021a40;
+	position: center;
+	height: 200px;
+	width: 100px;
+	background-color: #e6e6e6;
+}
+
+#indexBody {
+	position: fixed;
+	background-image: url("topBoard.jpeg");
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+#index{
+position: fixed;
+   bottom: 0px;
+   margin-left: auto;
+   margin-right: auto;
+}
+
+#indexMenu {
+	position:fixed;
+	bottom: 40px;
+	right: 20px;
+}
+#remove {
+	position: fixed;
+	background-image: url("sick.jpeg");
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+#edit {
+	background-image: url("underShot.jpeg");
+	background-repeat: no-repeat;
+	
+    background-size: cover;
+   
+}
+
+ #editForm {
+  position:fixed; 
+  margin-left:-150px;
+  bottom:25px;
+  left:50%;
+  width: 100%;
+}
+#list {
+	float: right;
+    width: 250px;
+    height: 300px;
+    bottom: 30px;
+    
+}
+#build{
+	position: absolute;
+	background-image: url("throw.jpeg");
+	background-repeat: no-repeat;
+
+}

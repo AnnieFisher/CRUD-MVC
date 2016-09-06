@@ -6,6 +6,7 @@
 <!DOCTYPE htmlml4>
 <html>
 <head>
+<link rel="stylesheet" type="text/css" href="CSSStyle/bootstrap.css">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>deck list</title>
 </head>

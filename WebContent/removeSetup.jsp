@@ -5,10 +5,12 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" type="text/css" href="CSSStyle/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="CSSStyle/myCSS.css">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>Remove a Setup</title>
 </head>
-<body>
+<body id="remove">
 
 
 		<form action="removeSetupFromList.do">

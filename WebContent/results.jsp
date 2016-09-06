@@ -5,7 +5,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title></title>
+<link rel="stylesheet" type="text/css" href="CSSStyle/bootstrap.css">
+<title>View Setup</title>
 </head>
 <body>
 		<h2>Chosen Setup:</h2>

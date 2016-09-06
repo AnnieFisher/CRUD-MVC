@@ -6,15 +6,17 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<link rel="stylesheet" type="text/css" href="CSSStyle/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="CSSStyle/myCSS.css">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Build Deck</title>
 </head>
-<body>
+<body id="build">
 
 <form action="GoToResultsJSP.do" method="POST">
 		Choose a deck: <br/>
 		<c:forEach var="deck" items="${decksByBrand}">
-		 <input type="radio" name="deckName" value="${deck.deckName}" /><img src =${deck.url}><br/>
+		 <input type="radio" name="deckName" value="${deck.deckName}" /><img id="boards" src =${deck.url}><br/>
 		</c:forEach> 
 		<br>
 		Choose wheels:
@@ -38,6 +40,7 @@
 
 		<input type="submit" value="Submit" />
 	</form>
+	
 <li><a href="buildForm.html">Go Back To Select Different Options</a></li> 
 <li><a href="index.html">Go To Start Page</a></li> 
 </body>
