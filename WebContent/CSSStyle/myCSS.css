@@ -57,7 +57,7 @@ position: fixed;
 }
 #build{
 	position: absolute;
-	background-image: url("throw.jpeg");
+/* 	background-image: url("throw.jpeg"); */
 	background-repeat: no-repeat;
 
 }
