@@ -45,6 +45,9 @@
 			<input type="submit" value="edit setup" />
 			</form>
 	</div>
-
+<ul>
+<li><a href="index.html">Start Over</a></li> 
+<li><a href="GoToViewAll.do">View all available decks</a><br/></li>
+</ul>
 </body>
 </html>

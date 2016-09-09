@@ -7,37 +7,59 @@
 </head>
 <body>
 	<h1>Pick A Setup From Our Options</h1>
- <form action="GoToBuildJSP.do" method="GET">
-		Brands to choose from: <br/>
-		Element, Zero, Girl, Plan B, Baker:<br/>
-		<input type="text" name="deckBrand"/> <br/>
-		
-		Choose Wheel by Rank 1-5: <br/>
-		<input type="text" name="wheelRank"/> <br/>
-
-		Choose Wheel by Rank 1-5: <br/>
-		<input type="text" name="bearingRank"/> <br/>
-		
-
-		Choose Trucks by Rank 1-5: <br/>
-		<input type="text" name="truckRank"/> <br/>
-		
-		<input type="submit" value="Get Setup" /><br/>
-</form> 
-<br>
+	<form action="GoToBuildJSP.do" method="GET">
+		Select a Deck:
+		<select name="deckBrand">
+			<option value="Element">Element</option>
+			<option value="Zero">Zero</option>
+			<option value="Girl">Girl</option>
+			<option value="Plan B">Plan B</option>
+			<option value="Baker">Baker</option>
+		</select>
+	
+		Choose Wheel by Rank 1-5:	
+		<select name="wheelRank">
+			<option value="1">One</option>
+			<option value="2">Two</option>
+			<option value="3">Three</option>
+			<option value="4">Four</option>
+			<option value="5">Five</option>
+		</select>
+		Choose Bearing by Rank 1-5:
+		<select name="bearingRank">
+			<option value="1">One</option>
+			<option value="2">Two</option>
+			<option value="3">Three</option>
+			<option value="4">Four</option>
+			<option value="5">Five</option>
+		</select>
+			
+		Choose Truck by Rank 1-5:
+		<select name="truckRank">
+			<option value="1">One</option>
+			<option value="2">Two</option>
+			<option value="3">Three</option>
+			<option value="4">Four</option>
+			<option value="5">Five</option>
+		</select>
+			<input type="submit" value="Get Setup" /><br />			
+	</form>
+	<br>
 	<h1>Or Customize</h1>
 	<form action="addNewSetup.do" method="POST">
-		Custom input:
-		<br>
-		<input type="text" name="deckBrand" placeholder="Deck Brand"/><br/>
-		<input type="text" name="deckName" placeholder="Deck Name"/><br/>
-		<input type="text" name="wheelBrand" placeholder="Wheels"/><br/>
-		<input type="text" name="bearingBrand" placeholder="Bearings"/><br/>
-		<input type="text" name="truckBrand" placeholder="Trucks"/><br/>
-		
-		<input type="submit" value="Get Custom SetUp" />
+		Custom input: <br> <input type="text" name="deckBrand"
+			placeholder="Deck Brand" /><br /> <input type="text" name="deckName"
+			placeholder="Deck Name" /><br /> <input type="text" name="wheelBrand"
+			placeholder="Wheels" /><br /> <input type="text" name="bearingBrand"
+			placeholder="Bearings" /><br /> <input type="text" name="truckBrand"
+			placeholder="Trucks" /><br /> <input type="submit"
+			value="Get Custom SetUp" />
 	</form>
 
+	<ul>
+		<li><a href="index.html">Start Over</a></li>
+		<li><a href="GoToViewAll.do">View all available decks</a><br /></li>
+	</ul>
 
 
 </body>

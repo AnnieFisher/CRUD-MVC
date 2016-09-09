@@ -43,7 +43,10 @@
 			
 			<input type="submit" value="remove deck" />
 			</form>
-
+<ul>
+<li><a href="index.html">Start Over</a></li> 
+<li><a href="GoToViewAll.do">View all available decks</a><br/></li>
+</ul>
 
 </body>
 </html>
