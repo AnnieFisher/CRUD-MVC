@@ -166,9 +166,9 @@ public class BuildDbDAO implements BuildDAO {
 			sqltxt = "UPDATE decks SET decks_name=?"
 						+ " WHERE decks_name=?";
 			PreparedStatement stmt = conn.prepareStatement(sqltxt);
-			deck.setDeckName(deckName);
+			stmt.setString(1, deckName);
 			String newDeckName = deck.getDeckName();
-			stmt.setString(1, newDeckName);
+			stmt.setString(2, newDeckName);
 
 			int uc = stmt.executeUpdate();
 			if (uc == 1) {
@@ -279,10 +279,9 @@ public class BuildDbDAO implements BuildDAO {
 			sqltxt = "UPDATE wheels SET idwheels=?, wheels_brand=?" 
 						+ " WHERE wheels_brand=?";
 			PreparedStatement stmt = conn.prepareStatement(sqltxt);
-			wheel.setWheelBrand(wheelBrand);
+			stmt.setString(1, wheelBrand);
 			String newWheelBrand = wheel.getWheelBrand();
-			stmt.setString(1, newWheelBrand);
-
+			stmt.setString(2, newWheelBrand);
 			int uc = stmt.executeUpdate();
 			if (uc == 1) {
 				System.out.println("Wheel updated.");
@@ -396,9 +395,7 @@ public class BuildDbDAO implements BuildDAO {
 			sqltxt = "UPDATE bearings SET idbearings=?, bearings_brand=?"
 					+ " WHERE bearings_brand=?";
 			PreparedStatement stmt = conn.prepareStatement(sqltxt);
-			bearing.setBearingBrand(bearingBrand);
-			String newBearingBrand = bearing.getBearingBrand();
-			stmt.setString(1, newBearingBrand);
+			stmt.setString(1, bearingBrand);
 
 			int uc = stmt.executeUpdate();
 			if (uc == 1) {
@@ -512,9 +509,9 @@ public class BuildDbDAO implements BuildDAO {
 			sqltxt = "UPDATE trucks SET idtrucks=?, trucks_brand=?"
 					+ " WHERE trucks_brand=?";
 			PreparedStatement stmt = conn.prepareStatement(sqltxt);
-			truck.setTruckBrand(truckBrand);
+			stmt.setString(1, truckBrand);
 			String newTruckBrand = truck.getTruckBrand();
-			stmt.setString(1, newTruckBrand);
+			stmt.setString(2, newTruckBrand);
 
 			int uc = stmt.executeUpdate();
 			if (uc == 1) {

@@ -299,28 +299,29 @@ public class BuildFileDAO implements BuildDAO {
 	}
 
 
+	
 	@Override
-	public Deck updateDeck() {
+	public void updateDeck(Deck deck) {
 		// TODO Auto-generated method stub
-		return null;
+		
 	}
 
 	@Override
-	public Wheel updateWheels() {
+	public void updateWheels(Wheel wheel) {
 		// TODO Auto-generated method stub
-		return null;
+		
 	}
 
 	@Override
-	public Bearing updateBearings() {
+	public void updateBearings(Bearing bearing) {
 		// TODO Auto-generated method stub
-		return null;
+		
 	}
 
 	@Override
-	public Truck updateTrucks() {
+	public void updateTrucks(Truck truck) {
 		// TODO Auto-generated method stub
-		return null;
+		
 	}
 
 }
