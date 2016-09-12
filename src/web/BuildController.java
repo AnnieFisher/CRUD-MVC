@@ -255,10 +255,11 @@ public class BuildController {
 	 Bearing prevbb = buildDAO.getBearingsByBrand(pbb);
 	 Truck prevtb = buildDAO.getTrucksByBrand(ptb);
 	
-	 prevdn.setDeckName(ndn);
-	 prevwb.setWheelBrand(nwb);
-	 prevbb.setBearingBrand(nbb);
-	 prevtb.setTruckBrand(ntb);
+	 buildDAO.updateDeck(prevdn, ndn);
+	 buildDAO.updateWheels(prevwb, nwb);
+	 buildDAO.updateBearings(prevbb, nbb);
+	 buildDAO.updateTrucks(prevtb, ntb);
+	
 	 ModelAndView mv = new ModelAndView("results.jsp");
 	 mv.addObject("decks",buildDAO.ListAllDecks());
 	 mv.addObject("wheels",buildDAO.getAllWheels());

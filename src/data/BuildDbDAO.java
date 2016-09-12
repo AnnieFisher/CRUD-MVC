@@ -158,17 +158,17 @@ public class BuildDbDAO implements BuildDAO {
 	}
 
 	@Override
-	public void updateDeck(Deck deck) {
+	public void updateDeck(Deck deck, String deckName) {
+		
 		try {
 			Connection conn = DriverManager.getConnection(url, user, pass);
 			String sqltxt;
-			String deckName = deck.getDeckName();
 			sqltxt = "UPDATE decks SET decks_name=?"
-						+ " WHERE decks_name=?";
+						+ " WHERE iddecks=?";
 			PreparedStatement stmt = conn.prepareStatement(sqltxt);
 			stmt.setString(1, deckName);
 			String newDeckName = deck.getDeckName();
-			stmt.setString(2, newDeckName);
+			stmt.setInt(2, deck.getId());
 
 			int uc = stmt.executeUpdate();
 			if (uc == 1) {
@@ -271,17 +271,16 @@ public class BuildDbDAO implements BuildDAO {
 	}
 
 	@Override
-	public void updateWheels(Wheel wheel) {
+	public void updateWheels(Wheel wheel, String wheelBrand) {
 		try {
 			Connection conn = DriverManager.getConnection(url, user, pass);
-			String wheelBrand = wheel.getWheelBrand();
 			String sqltxt;
-			sqltxt = "UPDATE wheels SET idwheels=?, wheels_brand=?" 
-						+ " WHERE wheels_brand=?";
+			sqltxt = "UPDATE wheels SET wheels_brand=?" 
+						+ " WHERE idwheels=?";
 			PreparedStatement stmt = conn.prepareStatement(sqltxt);
 			stmt.setString(1, wheelBrand);
 			String newWheelBrand = wheel.getWheelBrand();
-			stmt.setString(2, newWheelBrand);
+			stmt.setInt(2, wheel.getId());
 			int uc = stmt.executeUpdate();
 			if (uc == 1) {
 				System.out.println("Wheel updated.");
@@ -386,16 +385,17 @@ public class BuildDbDAO implements BuildDAO {
 	}
 
 	@Override
-	public void updateBearings(Bearing bearing) {
+	public void updateBearings(Bearing bearing, String bearingBrand) {
 
 		try {
 			Connection conn = DriverManager.getConnection(url, user, pass);
-			String bearingBrand = bearing.getBearingBrand();
 			String sqltxt;
-			sqltxt = "UPDATE bearings SET idbearings=?, bearings_brand=?"
-					+ " WHERE bearings_brand=?";
+			sqltxt = "UPDATE bearings SET bearings_brand=?"
+					+ " WHERE idbearings=?";
 			PreparedStatement stmt = conn.prepareStatement(sqltxt);
 			stmt.setString(1, bearingBrand);
+			String newWheelBrand = bearing.getBearingBrand();
+			stmt.setInt(2, bearing.getId());
 
 			int uc = stmt.executeUpdate();
 			if (uc == 1) {
@@ -501,17 +501,16 @@ public class BuildDbDAO implements BuildDAO {
 	}
 	
 	@Override
-	public void updateTrucks(Truck truck) {
+	public void updateTrucks(Truck truck, String truckBrand) {
 		try {
 			Connection conn = DriverManager.getConnection(url, user, pass);
-			String truckBrand = truck.getTruckBrand();
 			String sqltxt;
-			sqltxt = "UPDATE trucks SET idtrucks=?, trucks_brand=?"
-					+ " WHERE trucks_brand=?";
+			sqltxt = "UPDATE trucks SET trucks_brand=?"
+					+ " WHERE idtrucks=?";
 			PreparedStatement stmt = conn.prepareStatement(sqltxt);
 			stmt.setString(1, truckBrand);
 			String newTruckBrand = truck.getTruckBrand();
-			stmt.setString(2, newTruckBrand);
+			stmt.setInt(2, truck.getId());
 
 			int uc = stmt.executeUpdate();
 			if (uc == 1) {
