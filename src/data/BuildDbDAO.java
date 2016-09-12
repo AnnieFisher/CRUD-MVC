@@ -167,7 +167,6 @@ public class BuildDbDAO implements BuildDAO {
 						+ " WHERE iddecks=?";
 			PreparedStatement stmt = conn.prepareStatement(sqltxt);
 			stmt.setString(1, deckName);
-			String newDeckName = deck.getDeckName();
 			stmt.setInt(2, deck.getId());
 
 			int uc = stmt.executeUpdate();
@@ -279,7 +278,6 @@ public class BuildDbDAO implements BuildDAO {
 						+ " WHERE idwheels=?";
 			PreparedStatement stmt = conn.prepareStatement(sqltxt);
 			stmt.setString(1, wheelBrand);
-			String newWheelBrand = wheel.getWheelBrand();
 			stmt.setInt(2, wheel.getId());
 			int uc = stmt.executeUpdate();
 			if (uc == 1) {
@@ -393,8 +391,7 @@ public class BuildDbDAO implements BuildDAO {
 			sqltxt = "UPDATE bearings SET bearings_brand=?"
 					+ " WHERE idbearings=?";
 			PreparedStatement stmt = conn.prepareStatement(sqltxt);
-			stmt.setString(1, bearingBrand);
-			String newWheelBrand = bearing.getBearingBrand();
+			stmt.setString(1, bearingBrand);		
 			stmt.setInt(2, bearing.getId());
 
 			int uc = stmt.executeUpdate();
@@ -509,7 +506,6 @@ public class BuildDbDAO implements BuildDAO {
 					+ " WHERE idtrucks=?";
 			PreparedStatement stmt = conn.prepareStatement(sqltxt);
 			stmt.setString(1, truckBrand);
-			String newTruckBrand = truck.getTruckBrand();
 			stmt.setInt(2, truck.getId());
 
 			int uc = stmt.executeUpdate();
