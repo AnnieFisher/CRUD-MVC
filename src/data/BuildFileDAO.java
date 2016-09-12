@@ -130,7 +130,6 @@ public class BuildFileDAO implements BuildDAO {
 		}
 	}
 
-	
 	@Override
 	public List<Wheel> getWheelsByRank(String wheelRank) {
 		List<Wheel> w = new ArrayList<>();
@@ -298,30 +297,28 @@ public class BuildFileDAO implements BuildDAO {
 
 	}
 
-
-	
 	@Override
-	public void updateDeck(Deck deck) {
+	public void updateDeck(Deck deck, String deckName) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
-	public void updateWheels(Wheel wheel) {
+	public void updateWheels(Wheel wheel, String wheelBrand) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
-	public void updateBearings(Bearing bearing) {
+	public void updateBearings(Bearing bearing, String bearingBrand) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
-	public void updateTrucks(Truck truck) {
+	public void updateTrucks(Truck truck, String truckBrand) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }

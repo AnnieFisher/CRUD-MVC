@@ -34,6 +34,8 @@ public interface BuildDAO {
 	public void removeTruck(Truck truck);
 	public void updateTrucks(Truck truck, String truckBrand);
 	
+	public void addBoardSetup(BoardSetup boardSetup, Deck deck, Wheel wheel, Bearing bearing, Truck truck);
+	
 	
 	
 	

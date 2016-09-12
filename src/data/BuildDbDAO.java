@@ -70,6 +70,35 @@ public class BuildDbDAO implements BuildDAO {
 	}
 
 	@Override
+	
+	public void addBoardSetup(BoardSetup boardSetup, Deck deck,Wheel wheel, Bearing bearing, Truck truck) {
+
+		try {
+			Connection conn = DriverManager.getConnection(url, user, pass);
+			String sqltxt = "INSERT INTO build (iddecks, idwheels, idbearings, idtrucks) VALUES(?,?,?,?)";
+			PreparedStatement stmt = conn.prepareStatement(sqltxt);
+
+			stmt.setInt(1, deck.getId());
+			stmt.setInt(2, wheel.getId());
+			stmt.setInt(3, bearing.getId());
+			stmt.setInt(4, truck.getId());
+			int uc = stmt.executeUpdate();
+			if (uc == 1) {
+				System.out.println("DEBUG: Db.addDeck(): Deck added: " + deck);
+			} else {
+				System.out.println("DEBUG: DB.addDeck() FAIL no deck added");
+			}
+			stmt.close();
+			conn.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	
+	
+	
+	
 	public void addDeck(Deck deck) {
 
 		try {
