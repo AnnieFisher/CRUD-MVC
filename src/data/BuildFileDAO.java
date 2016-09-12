@@ -321,4 +321,10 @@ public class BuildFileDAO implements BuildDAO {
 
 	}
 
+	@Override
+	public void addBoardSetup(BoardSetup boardSetup, Deck deck, Wheel wheel, Bearing bearing, Truck truck) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
