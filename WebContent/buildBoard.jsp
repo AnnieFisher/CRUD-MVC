@@ -17,7 +17,7 @@
 		Choose a deck: <br />
 		<c:forEach var="deck" items="${decksByBrand}" varStatus="loop">
 			<input type="radio" name="deckName" value="${deck.deckName}" />
-			<img id="boards" src=${deck.url}>
+			<img id="boards" src="${deck.url}">
 			<br />
 		</c:forEach>
 	

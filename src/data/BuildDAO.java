@@ -33,6 +33,18 @@ public interface BuildDAO {
 	public Truck getTrucksByBrand(String truckBrand);
 	public void removeTruck(Truck truck);
 	public void updateTrucks(Truck truck);
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 
 

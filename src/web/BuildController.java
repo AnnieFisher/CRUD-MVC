@@ -267,18 +267,5 @@ public class BuildController {
 	
 	 return mv;
 	 }
-
-//	@RequestMapping(path = "editSetup.do", method = RequestMethod.POST)
-//	 public ModelAndView editSetup(@RequestParam(name = "deckName") String dn,
-//			@RequestParam(name = "wheelBrand") String wb,
-//			@RequestParam(name = "bearingBrand") String bb,
-//			@RequestParam(name = "truckBrand") String tb) {
-//		 ModelAndView mv = new ModelAndView();
-//	     mv.setViewName("results.jsp");
-//	     mv.addObject("decks",buildDAO.getDeckByName(dn));
-//		 mv.addObject("wheels",buildDAO.getWheelsByBrand(wb));
-//		 mv.addObject("bearings",buildDAO.getBearingsByBrand(bb));
-//	  	 mv.addObject("trucks",buildDAO.getTrucksByBrand(tb));
-//	     return mv;
-//	}
+	 
 }

@@ -49,22 +49,16 @@ public class BuildDbDAO implements BuildDAO {
 
 	@Override
 	public List<Deck> getDecksByBrand(String deckBrand) {
-		List<Deck> decks = new ArrayList<>();
+		List<Deck> decks = null;
 		try {
 			Connection conn = DriverManager.getConnection(url, user, pass);
 			String sqltxt = "SELECT iddecks, decks_brand, decks_name, urls FROM decks WHERE decks_brand = ?";
 			PreparedStatement stmt = conn.prepareStatement(sqltxt);
 			stmt.setString(1, deckBrand);
 			ResultSet rs = stmt.executeQuery();
-
+			decks = new ArrayList<>();
 			while (rs.next()) {
-				Deck deck = new Deck();
-				deck.setId(rs.getInt("id"));
-				deck.setDeckBrand(rs.getString("deckBrand"));
-				deck.setDeckName(rs.getString("deckName"));
-				deck.setUrl(rs.getString("url"));
-
-				decks.add(deck);
+				decks.add(new Deck(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4)));
 			}
 			rs.close();
 			stmt.close();
@@ -168,14 +162,13 @@ public class BuildDbDAO implements BuildDAO {
 		try {
 			Connection conn = DriverManager.getConnection(url, user, pass);
 			String sqltxt;
-			int deckId = this.getDeckIdByDeckName(deck.getDeckName());
-			sqltxt = "UPDATE decks SET iddecks=?, decks_brand = ?, decks_name = ?, url=?  " + " WHERE iddecks = ?";
+			String deckName = deck.getDeckName();
+			sqltxt = "UPDATE decks SET decks_name=?"
+						+ " WHERE decks_name=?";
 			PreparedStatement stmt = conn.prepareStatement(sqltxt);
-			stmt.setInt(1, deck.getId());
-			stmt.setString(2, deck.getDeckBrand());
-			stmt.setString(3, deck.getDeckName());
-			stmt.setString(4, deck.getUrl());
-			stmt.setInt(5, deckId);
+			deck.setDeckName(deckName);
+			String newDeckName = deck.getDeckName();
+			stmt.setString(1, newDeckName);
 
 			int uc = stmt.executeUpdate();
 			if (uc == 1) {
@@ -190,26 +183,6 @@ public class BuildDbDAO implements BuildDAO {
 		}
 	}
 
-	private int getDeckIdByDeckName(String deckName) {
-		int id = 0;
-		try {
-			Connection conn = DriverManager.getConnection(url, user, pass);
-			String sqltxt;
-			sqltxt = "SELECT iddecks FROM decks WHERE iddecks = ?";
-			PreparedStatement stmt = conn.prepareStatement(sqltxt);
-			stmt.setString(1, deckName);
-			ResultSet rs = stmt.executeQuery();
-			if (rs.next()) {
-				id = rs.getInt(1);
-			}
-			rs.close();
-			stmt.close();
-			conn.close();
-		} catch (SQLException sqle) {
-			sqle.printStackTrace(System.err);
-		}
-		return id;
-	}
 
 	@Override
 	public List<Wheel> getAllWheels() {
@@ -256,21 +229,16 @@ public class BuildDbDAO implements BuildDAO {
 
 	@Override
 	public List<Wheel> getWheelsByRank(String wheelRank) {
-		List<Wheel> wheels = new ArrayList<>();
+		List<Wheel> wheels = null;
 		try {
 			Connection conn = DriverManager.getConnection(url, user, pass);
 			String sqltxt = "SELECT idwheels, wheels_rank, wheels_brand FROM wheels WHERE wheels_rank = ?";
 			PreparedStatement stmt = conn.prepareStatement(sqltxt);
 			stmt.setString(1, wheelRank);
 			ResultSet rs = stmt.executeQuery();
-
+			wheels = new ArrayList<>();
 			while (rs.next()) {
-				Wheel wheel = new Wheel();
-				wheel.setId(rs.getInt("id"));
-				wheel.setWheelRank(rs.getString("wheelRank"));
-				wheel.setWheelBrand(rs.getString("wheelBrand"));
-
-				wheels.add(wheel);
+				wheels.add(new Wheel(rs.getInt(1),rs.getString(2),rs.getString(3)));
 			}
 			rs.close();
 			stmt.close();
@@ -306,14 +274,14 @@ public class BuildDbDAO implements BuildDAO {
 	public void updateWheels(Wheel wheel) {
 		try {
 			Connection conn = DriverManager.getConnection(url, user, pass);
+			String wheelBrand = wheel.getWheelBrand();
 			String sqltxt;
-			int wheelId = this.getWheelIdByWheelBrand(wheel.getWheelBrand());
-			sqltxt = "UPDATE wheels SET idwheels=?, wheels_rank = ?, wheels_brand = ?  " + " WHERE idwheels = ?";
+			sqltxt = "UPDATE wheels SET idwheels=?, wheels_brand=?" 
+						+ " WHERE wheels_brand=?";
 			PreparedStatement stmt = conn.prepareStatement(sqltxt);
-			stmt.setInt(1, wheel.getId());
-			stmt.setString(2, wheel.getWheelRank());
-			stmt.setString(3, wheel.getWheelBrand());
-			stmt.setInt(4, wheelId);
+			wheel.setWheelBrand(wheelBrand);
+			String newWheelBrand = wheel.getWheelBrand();
+			stmt.setString(1, newWheelBrand);
 
 			int uc = stmt.executeUpdate();
 			if (uc == 1) {
@@ -328,44 +296,21 @@ public class BuildDbDAO implements BuildDAO {
 		}
 	}
 
-	private int getWheelIdByWheelBrand(String wheelBrand) {
-		int id = 0;
-		try {
-			Connection conn = DriverManager.getConnection(url, user, pass);
-			String sqltxt;
-			sqltxt = "SELECT idwheels FROM wheels WHERE idwheels = ?";
-			PreparedStatement stmt = conn.prepareStatement(sqltxt);
-			stmt.setString(1, wheelBrand);
-			ResultSet rs = stmt.executeQuery();
-			if (rs.next()) {
-				id = rs.getInt(1);
-			}
-			rs.close();
-			stmt.close();
-			conn.close();
-		} catch (SQLException sqle) {
-			sqle.printStackTrace(System.err);
-		}
-		return id;
-	}
+
 
 	@Override
 	public List<Bearing> getBearingsByRank(String bearingRank) {
-		List<Bearing> bearings = new ArrayList<>();
+		List<Bearing> bearings = null;
 		try {
 			Connection conn = DriverManager.getConnection(url, user, pass);
 			String sqltxt = "SELECT idbearings, bearings_rank, bearings_brand FROM bearings WHERE bearings_rank = ?";
 			PreparedStatement stmt = conn.prepareStatement(sqltxt);
 			stmt.setString(1, bearingRank);
 			ResultSet rs = stmt.executeQuery();
-
+			bearings = new ArrayList<>();
 			while (rs.next()) {
-				Bearing bearing = new Bearing();
-				bearing.setId(rs.getInt("id"));
-				bearing.setBearingRank(rs.getString("bearingRank"));
-				bearing.setBearingBrand(rs.getString("bearingBrand"));
-
-				bearings.add(bearing);
+				bearings.add(new Bearing(rs.getInt(1),rs.getString(2),rs.getString(3)));
+			
 			}
 			rs.close();
 			stmt.close();
@@ -443,17 +388,17 @@ public class BuildDbDAO implements BuildDAO {
 
 	@Override
 	public void updateBearings(Bearing bearing) {
+
 		try {
 			Connection conn = DriverManager.getConnection(url, user, pass);
+			String bearingBrand = bearing.getBearingBrand();
 			String sqltxt;
-			int bearingId = this.getBearingIdByBearingBrand(bearing.getBearingBrand());
-			sqltxt = "UPDATE bearings SET idbearings=?, bearings_rank = ?, bearings_brand = ?  "
-					+ " WHERE idwheels = ?";
+			sqltxt = "UPDATE bearings SET idbearings=?, bearings_brand=?"
+					+ " WHERE bearings_brand=?";
 			PreparedStatement stmt = conn.prepareStatement(sqltxt);
-			stmt.setInt(1, bearing.getId());
-			stmt.setString(2, bearing.getBearingRank());
-			stmt.setString(3, bearing.getBearingBrand());
-			stmt.setInt(4, bearingId);
+			bearing.setBearingBrand(bearingBrand);
+			String newBearingBrand = bearing.getBearingBrand();
+			stmt.setString(1, newBearingBrand);
 
 			int uc = stmt.executeUpdate();
 			if (uc == 1) {
@@ -466,46 +411,22 @@ public class BuildDbDAO implements BuildDAO {
 		} catch (SQLException sqle) {
 			sqle.printStackTrace(System.err);
 		}
+	
 	}
 
-	private int getBearingIdByBearingBrand(String bearingBrand) {
-		int id = 0;
-		try {
-			Connection conn = DriverManager.getConnection(url, user, pass);
-			String sqltxt;
-			sqltxt = "SELECT idbearings FROM bearings WHERE idbearings = ?";
-			PreparedStatement stmt = conn.prepareStatement(sqltxt);
-			stmt.setString(1, bearingBrand);
-			ResultSet rs = stmt.executeQuery();
-			if (rs.next()) {
-				id = rs.getInt(1);
-			}
-			rs.close();
-			stmt.close();
-			conn.close();
-		} catch (SQLException sqle) {
-			sqle.printStackTrace(System.err);
-		}
-		return id;
-	}
 
 	@Override
 	public List<Truck> getTrucksByRank(String truckRank) {
-		List<Truck> trucks = new ArrayList<>();
+		List<Truck> trucks = null;
 		try {
 			Connection conn = DriverManager.getConnection(url, user, pass);
 			String sqltxt = "SELECT idtrucks, trucks_rank, trucks_brand FROM trucks WHERE trucks_rank = ?";
 			PreparedStatement stmt = conn.prepareStatement(sqltxt);
 			stmt.setString(1, truckRank);
 			ResultSet rs = stmt.executeQuery();
-
+			trucks = new ArrayList<>();
 			while (rs.next()) {
-				Truck truck = new Truck();
-				truck.setId(rs.getInt("id"));
-				truck.setTruckRank(rs.getString("truckRank"));
-				truck.setTruckBrand(rs.getString("truckBrand"));
-
-				trucks.add(truck);
+				trucks.add(new Truck(rs.getInt(1),rs.getString(2),rs.getString(3)));
 			}
 			rs.close();
 			stmt.close();
@@ -586,14 +507,14 @@ public class BuildDbDAO implements BuildDAO {
 	public void updateTrucks(Truck truck) {
 		try {
 			Connection conn = DriverManager.getConnection(url, user, pass);
+			String truckBrand = truck.getTruckBrand();
 			String sqltxt;
-			int truckId = this.getTruckIdByTruckBrand(truck.getTruckBrand());
-			sqltxt = "UPDATE trucks SET idtrucks=? , trucks_brand = ?  "
-					+ " WHERE idtrucks = ?";
+			sqltxt = "UPDATE trucks SET idtrucks=?, trucks_brand=?"
+					+ " WHERE trucks_brand=?";
 			PreparedStatement stmt = conn.prepareStatement(sqltxt);
-			stmt.setInt(1, truck.getId());
-			stmt.setString(2, truck.getTruckBrand());
-			stmt.setInt(3, truckId);
+			truck.setTruckBrand(truckBrand);
+			String newTruckBrand = truck.getTruckBrand();
+			stmt.setString(1, newTruckBrand);
 
 			int uc = stmt.executeUpdate();
 			if (uc == 1) {
@@ -608,26 +529,7 @@ public class BuildDbDAO implements BuildDAO {
 		}
 	}
 
-	private int getTruckIdByTruckBrand(String truckBrand) {
-		int id = 0;
-		try {
-			Connection conn = DriverManager.getConnection(url, user, pass);
-			String sqltxt;
-			sqltxt = "SELECT idtrucks FROM trucks WHERE idtrucks = ?";
-			PreparedStatement stmt = conn.prepareStatement(sqltxt);
-			stmt.setString(1, truckBrand);
-			ResultSet rs = stmt.executeQuery();
-			if (rs.next()) {
-				id = rs.getInt(1);
-			}
-			rs.close();
-			stmt.close();
-			conn.close();
-		} catch (SQLException sqle) {
-			sqle.printStackTrace(System.err);
-		}
-		return id;
-	}
+
 
 	@Override
 	public void removeDeck(Deck deck) {
