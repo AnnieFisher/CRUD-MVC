@@ -10,6 +10,6 @@
 
 	<context:component-scan base-package="web" />
 
-	<bean id="dao" class="data.BuildFileDAO" />
+	<bean id="dao" class="data.BuildDbDAO" />
 
 </beans>

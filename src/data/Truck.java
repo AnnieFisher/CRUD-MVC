@@ -1,6 +1,7 @@
 package data;
 
 public class Truck {
+	private int id;
 	private String truckRank;
 	private String truckBrand;
 	
@@ -8,6 +9,13 @@ public class Truck {
 	}
 
 	public Truck(String truckRank, String truckBrand) {
+	
+		this.truckRank = truckRank;
+		this.truckBrand = truckBrand;
+	}
+	
+	public Truck(int id, String truckRank, String truckBrand) {
+		this.id = id;
 		this.truckRank = truckRank;
 		this.truckBrand = truckBrand;
 	}
@@ -28,9 +36,17 @@ public class Truck {
 		this.truckBrand = truckBrand;
 	}
 
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
 	@Override
 	public String toString() {
-		return "Truck [truckRank=" + truckRank + ", truckBrand=" + truckBrand + "]";
+		return "Truck [id=" + id + ", truckRank=" + truckRank + ", truckBrand=" + truckBrand + "]";
 	}
-	
+
 }

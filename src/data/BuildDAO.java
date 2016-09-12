@@ -4,64 +4,38 @@ import java.util.List;
 
 public interface BuildDAO {
 
-	
-
-	int count = 0;
-
-	public Deck getDeck();
-	
 	public List<Deck> getDecksByBrand(String deckBrand);
-
 	public void addDeck(Deck deck);
-
 	public Deck getDeckByName(String deckName);
-	
 	public List<Deck> ListAllDecks();
+	public Deck getDeckById(int id);
+	public Deck getDeckByUrl(String url);
+	public void removeDeck(Deck deck);
+	public void updateDeck(Deck deck);
 
 	public List<Wheel> getAllWheels();
-
 	public void addWheel(Wheel wheel);
-
 	public List<Wheel> getWheelsByRank(String wheelRank);
-
 	public Wheel getWheelsByBrand(String wheelBrand);
-
-	List<Bearing> getBearingsByRank(String bearingRank);
-
-	List<Bearing> getAllBearings();
-
-	public void addBearing(Bearing bearing);
-
-	public Bearing getBearingsByBrand(String bearingBrand);
-
-	public List<Truck> getTrucksByRank(String truckRank);
-
-	public List<Truck> getAllTrucks();
-
-	public void addTruck(Truck truck);
-
-	public Truck getTrucksByBrand(String truckBrand);
-
-	public Deck getDeckById(int id);
-
-//	List<Deck> getDeckByUrl(String url);
-//	
-	public Deck getDeckByUrl(String url);
-
-	public void removeDeck(Deck deck);
-
 	public void removeWheel(Wheel wheel);
+	public void updateWheels(Wheel wheel);
 
+	public List<Bearing> getBearingsByRank(String bearingRank);
+	public List<Bearing> getAllBearings();
+	public void addBearing(Bearing bearing);
+	public Bearing getBearingsByBrand(String bearingBrand);
 	public void removeBearing(Bearing bearing);
-
+	public void updateBearings(Bearing bearing);
+	
+	public List<Truck> getTrucksByRank(String truckRank);
+	public List<Truck> getAllTrucks();
+	public void addTruck(Truck truck);
+	public Truck getTrucksByBrand(String truckBrand);
 	public void removeTruck(Truck truck);
+	public void updateTrucks(Truck truck);
 
-	
 
-	
 
-	
-	
 	
 
 }

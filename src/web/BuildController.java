@@ -48,12 +48,12 @@ public class BuildController {
 		return truckList;
 	}
 
-//	@RequestMapping(path = "GetDeckBrand.do", method = RequestMethod.GET)
-//	public ModelAndView getByBrand(@RequestParam("deckBrand") String b) {
-//		ModelAndView mv = new ModelAndView("results.jsp");
-//		mv.addObject("decksByBrand", buildDAO.getDecksByBrand(b));
-//		return mv;
-//	}
+	// @RequestMapping(path = "GetDeckBrand.do", method = RequestMethod.GET)
+	// public ModelAndView getByBrand(@RequestParam("deckBrand") String b) {
+	// ModelAndView mv = new ModelAndView("results.jsp");
+	// mv.addObject("decksByBrand", buildDAO.getDecksByBrand(b));
+	// return mv;
+	// }
 	@RequestMapping(path = "GetDeckURL.do", method = RequestMethod.GET)
 	public ModelAndView getByURL(@RequestParam("url") String b) {
 		ModelAndView mv = new ModelAndView("results.jsp");
@@ -76,13 +76,13 @@ public class BuildController {
 	// return mv;
 	// }
 
-//	@RequestMapping(path = "NewDeck.do", method = RequestMethod.POST)
-//	public ModelAndView newDeck(Deck deck) {
-//		buildDAO.addDeck(deck);
-//		ModelAndView mv = new ModelAndView();
-//		mv.setViewName("results.jsp");
-//		return mv;
-//	}
+	// @RequestMapping(path = "NewDeck.do", method = RequestMethod.POST)
+	// public ModelAndView newDeck(Deck deck) {
+	// buildDAO.addDeck(deck);
+	// ModelAndView mv = new ModelAndView();
+	// mv.setViewName("results.jsp");
+	// return mv;
+	// }
 
 	@RequestMapping(path = "GetWheelBrand.do", method = RequestMethod.POST)
 	public ModelAndView wheelsByBrand(@RequestParam("wheelBrand") String b) {
@@ -173,14 +173,17 @@ public class BuildController {
 	}
 
 	@RequestMapping(path = "addNewSetup.do", method = RequestMethod.POST)
-	public ModelAndView addCustomSetup(Deck deck,Wheel wheel, Bearing bearing, Truck truck){
+	public ModelAndView addCustomSetup(Deck deck, Wheel wheel, Bearing bearing, Truck truck) {
 		buildDAO.addDeck(deck);
 		buildDAO.addWheel(wheel);
 		buildDAO.addBearing(bearing);
 		buildDAO.addTruck(truck);
 		ModelAndView mv = new ModelAndView("results.jsp");
-		mv.addObject("decks",buildDAO.ListAllDecks());
-	
+		mv.addObject("decks", buildDAO.ListAllDecks());
+		mv.addObject("wheels", buildDAO.getAllWheels());
+		mv.addObject("bearings", buildDAO.getAllBearings());
+		mv.addObject("trucks", buildDAO.getAllTrucks());
+
 		return mv;
 	}
 
@@ -188,71 +191,94 @@ public class BuildController {
 	public ModelAndView goToViewAll() {
 		ModelAndView mv = new ModelAndView("viewAll.jsp");
 		mv.addObject("decks", buildDAO.ListAllDecks());
-	
+		mv.addObject("wheels", buildDAO.getAllWheels());
+		mv.addObject("bearings", buildDAO.getAllBearings());
+		mv.addObject("trucks", buildDAO.getAllTrucks());
+
 		return mv;
 	}
-	
+
 	@RequestMapping(path = "removeSetup.do")
-	public ModelAndView removeSetup(Deck deck,Wheel wheel, Bearing bearing, Truck truck){
+	public ModelAndView removeSetup(Deck deck, Wheel wheel, Bearing bearing, Truck truck) {
 		buildDAO.removeDeck(deck);
 		buildDAO.removeWheel(wheel);
 		buildDAO.removeBearing(bearing);
 		buildDAO.removeTruck(truck);
 		ModelAndView mv = new ModelAndView("removeSetup.jsp");
-		mv.addObject("decks",buildDAO.ListAllDecks());
-	
+		mv.addObject("decks", buildDAO.ListAllDecks());
+		mv.addObject("wheels", buildDAO.getAllWheels());
+		mv.addObject("bearings", buildDAO.getAllBearings());
+		mv.addObject("trucks", buildDAO.getAllTrucks());
+
 		return mv;
 	}
+
 	@RequestMapping(path = "removeSetupFromList.do")
 	public ModelAndView removeSetupFromList(@RequestParam("deckName") String dn, @RequestParam("wheelBrand") String wb,
-			@RequestParam("bearingBrand") String bb, @RequestParam("truckBrand") String tb){
+			@RequestParam("bearingBrand") String bb, @RequestParam("truckBrand") String tb) {
 		buildDAO.removeDeck(buildDAO.getDeckByName(dn));
 		buildDAO.removeWheel(buildDAO.getWheelsByBrand(wb));
 		buildDAO.removeBearing(buildDAO.getBearingsByBrand(bb));
 		buildDAO.removeTruck(buildDAO.getTrucksByBrand(tb));
 		ModelAndView mv = new ModelAndView("results.jsp");
-		mv.addObject("decks",buildDAO.ListAllDecks());
-	
+		mv.addObject("decks", buildDAO.ListAllDecks());
+		mv.addObject("wheels", buildDAO.getAllWheels());
+		mv.addObject("bearings", buildDAO.getAllBearings());
+		mv.addObject("trucks", buildDAO.getAllTrucks());
+
 		return mv;
 	}
-	
 
 	@RequestMapping("goToEditSetup.do")
 	public ModelAndView goToChangeName() {
 		ModelAndView mv = new ModelAndView("EditSetup.jsp");
-		mv.addObject("decks",buildDAO.ListAllDecks());
-		mv.addObject("wheels",buildDAO.getAllWheels());
-		mv.addObject("bearings",buildDAO.getAllBearings());
-		mv.addObject("trucks",buildDAO.getAllTrucks());
-	
-		return mv;
-	}
-	
-	@RequestMapping(path = "editSetup.do", method = RequestMethod.POST)
-	public ModelAndView editSetup(@RequestParam("deckName") String pdn,
-			@RequestParam("wheelBrand") String pwb,
-			@RequestParam("bearingBrand") String pbb, 
-			@RequestParam("truckBrand") String ptb,@RequestParam("newDeckName") String ndn,
-			@RequestParam("newWheelBrand") String nwb,@RequestParam("newBearingBrand") String nbb, 
-			@RequestParam("newTruckBrand") String ntb){
-	
-		Deck prevdn = buildDAO.getDeckByName(pdn);
-		Wheel prevwb = buildDAO.getWheelsByBrand(pwb);
-		Bearing prevbb = buildDAO.getBearingsByBrand(pbb);
-		Truck prevtb = buildDAO.getTrucksByBrand(ptb);
-		
-		prevdn.setDeckName(ndn);
-		prevwb.setWheelBrand(nwb);
-		prevbb.setBearingBrand(nbb);
-		prevtb.setTruckBrand(ntb);
-		ModelAndView mv = new ModelAndView("results.jsp");
-		mv.addObject("decks",buildDAO.ListAllDecks());
-		mv.addObject("wheels",buildDAO.getAllWheels());
-		mv.addObject("bearings",buildDAO.getAllBearings());
-		mv.addObject("trucks",buildDAO.getAllTrucks());
-		
+		mv.addObject("decks", buildDAO.ListAllDecks());
+		mv.addObject("wheels", buildDAO.getAllWheels());
+		mv.addObject("bearings", buildDAO.getAllBearings());
+		mv.addObject("trucks", buildDAO.getAllTrucks());
+
 		return mv;
 	}
 
+	 @RequestMapping(path = "editSetup.do", method = RequestMethod.POST)
+	 public ModelAndView editSetup(@RequestParam("deckName") String pdn,
+	 @RequestParam("wheelBrand") String pwb,
+	 @RequestParam("bearingBrand") String pbb,
+	 @RequestParam("truckBrand") String ptb,@RequestParam("newDeckName")
+	 String ndn,
+	 @RequestParam("newWheelBrand") String
+	 nwb,@RequestParam("newBearingBrand") String nbb,
+	 @RequestParam("newTruckBrand") String ntb){
 	
+	 Deck prevdn = buildDAO.getDeckByName(pdn);
+	 Wheel prevwb = buildDAO.getWheelsByBrand(pwb);
+	 Bearing prevbb = buildDAO.getBearingsByBrand(pbb);
+	 Truck prevtb = buildDAO.getTrucksByBrand(ptb);
+	
+	 prevdn.setDeckName(ndn);
+	 prevwb.setWheelBrand(nwb);
+	 prevbb.setBearingBrand(nbb);
+	 prevtb.setTruckBrand(ntb);
+	 ModelAndView mv = new ModelAndView("results.jsp");
+	 mv.addObject("decks",buildDAO.ListAllDecks());
+	 mv.addObject("wheels",buildDAO.getAllWheels());
+	 mv.addObject("bearings",buildDAO.getAllBearings());
+	 mv.addObject("trucks",buildDAO.getAllTrucks());
+	
+	 return mv;
+	 }
+
+//	@RequestMapping(path = "editSetup.do", method = RequestMethod.POST)
+//	 public ModelAndView editSetup(@RequestParam(name = "deckName") String dn,
+//			@RequestParam(name = "wheelBrand") String wb,
+//			@RequestParam(name = "bearingBrand") String bb,
+//			@RequestParam(name = "truckBrand") String tb) {
+//		 ModelAndView mv = new ModelAndView();
+//	     mv.setViewName("results.jsp");
+//	     mv.addObject("decks",buildDAO.getDeckByName(dn));
+//		 mv.addObject("wheels",buildDAO.getWheelsByBrand(wb));
+//		 mv.addObject("bearings",buildDAO.getBearingsByBrand(bb));
+//	  	 mv.addObject("trucks",buildDAO.getTrucksByBrand(tb));
+//	     return mv;
+//	}
 }

@@ -4,7 +4,6 @@ public class Deck {
 	private int id;
 	private String deckBrand;
 	private String deckName;
-
 	private String url;
 
 	public Deck() {

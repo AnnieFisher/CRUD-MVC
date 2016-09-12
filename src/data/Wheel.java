@@ -1,13 +1,21 @@
 package data;
 
 public class Wheel {
+	private int id;
 	private String wheelRank;
 	private String wheelBrand;
 	
 	public Wheel(){	
 	}
-
+	
 	public Wheel(String wheelRank, String wheelBrand) {
+	
+		this.wheelRank = wheelRank;
+		this.wheelBrand = wheelBrand;
+	}
+	
+	public Wheel(int id, String wheelRank, String wheelBrand) {
+		this.id = id;
 		this.wheelRank = wheelRank;
 		this.wheelBrand = wheelBrand;
 	}
@@ -28,9 +36,17 @@ public class Wheel {
 		this.wheelBrand = wheelBrand;
 	}
 
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
 	@Override
 	public String toString() {
-		return "Wheel [wheelRank=" + wheelRank + ", wheelBrand=" + wheelBrand + "]";
+		return "Wheel [id=" + id + ", wheelRank=" + wheelRank + ", wheelBrand=" + wheelBrand + "]";
 	}
 	
 }
