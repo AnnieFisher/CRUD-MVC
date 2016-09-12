@@ -16,5 +16,6 @@ efficient formatting. I am also going to add more to the program. I want to link
 each item. I also want to add editorial features on the aspects of buying each segment of the board. And last, I am going 
 to create a skateguide for colorado skateparks. 
 
-
-
+***Update***
+Integrated data via mySQL database.
+Challenges: understanding how the sql queries interact with the model and view. 
