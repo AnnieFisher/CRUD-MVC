@@ -10,7 +10,7 @@ html {
       -ms-text-size-adjust: 100%;
 }
 body {
-  margin: 5%;
+  margin: 0;
 }
 article,
 aside,
@@ -85,8 +85,6 @@ sub {
 }
 img {
   border: 0;
-  height: 200px;
-	width: 300px;
 }
 svg:not(:root) {
   overflow: hidden;

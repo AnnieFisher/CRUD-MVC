@@ -6,17 +6,23 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<link rel="stylesheet" type="text/css" href="CSSStyle/bootstrap.css">
+<!-- <link rel="stylesheet" type="text/css" href="CSSStyle/bootstrap.css"> -->
 <link rel="stylesheet" type="text/css" href="CSSStyle/myCSS.css">
+<link rel="stylesheet" type="text/css" href="CSSStyle/normalize.css">
+<link rel="stylesheet" type="text/css" href="CSSStyle/skeleton.css">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>All Setup Options</title>
 </head>
 <body id="viewAll">
-	<ul>
+	<ul class="topnav" id="myTopnav">
 		<li><a href="removeSetup.do">remove an item from the list</a></li>
 		<li><a href="goToEditSetup.do">edit an item from the list</a></li>
 		<li><a href="buildForm.html">add another Setup</a></li>
 		<li><a href="index.html">Start Over</a></li>
+		<li class="icon">
+    <a href="javascript:void(0);" style="font-size:15px;" onclick="myFunction()">☰</a>
+  </li>
+	<div id="deck">
 	</ul>
 	<table id="deckTable">
 		<th><h3>DECKS</h3></th>
@@ -28,9 +34,9 @@
 			</c:if>
 			<td>|${deck.deckName}|</td>
 		</c:forEach>
-		<hr />
+		
 	</table>
-	<hr />
+</div>
 	<div id="viewAllDiv">
 		<div id="topCont">
 			<div id="container-viewAll1">

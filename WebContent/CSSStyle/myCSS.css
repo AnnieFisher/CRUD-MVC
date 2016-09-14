@@ -1,64 +1,148 @@
 @CHARSET "UTF-8";
 
-#boards {
-	padding: 1px;
-	border: 2px inset #021a40;
-	position: center;
-	height: 250px;
-	width: 200px;
-	background-color: #e6e6e6;
+body {
+	margin: 0;
 }
 
-
-#indexBody {
-	position: relative;
+ul.topnav {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	background-color: #333;
 }
 
-#indexBG {
-	background-image: url("topBoard.jpeg");
-	background-repeat: no-repeat;
-	background-size: cover;
-	opacity: .5;
-	width: 800px;
-	height: 500px;
-	background-color: grey;
+ul.topnav li {
+	float: left;
 }
 
-#innerDiv {
-	width: 800px;
-	height: 500px;
+ul.topnav li a {
+	display: inline-block;
+	color: #f2f2f2;
+	text-align: center;
+	padding: 14px 16px;
+	text-decoration: none;
+	transition: 0.3s;
+	font-size: 17px;
+}
+
+ul.topnav li a:hover {
+	background-color: #555;
+}
+
+ul.topnav li.icon {
+	display: none;
+}
+
+@media screen and (max-width:680px) {
+	ul.topnav li:not (:first-child ) {
+		display: none;
+	}
+	ul.topnav li.icon {
+		float: right;
+		display: inline-block;
+	}
+}
+
+@media screen and (max-width:680px) {
+	ul.topnav.responsive {
+		position: relative;
+	}
+	ul.topnav.responsive li.icon {
+		position: absolute;
+		right: 0;
+		top: 0;
+	}
+	ul.topnav.responsive li {
+		float: none;
+		display: inline;
+	}
+	ul.topnav.responsive li a {
+		display: block;
+		text-align: left;
+	}
+}
+
+<
+script>function myFunction () {var x =
+	document.getElementById("myTopnav");if (x.className === "topnav") {
+	x.className += " responsive";
+	
+}
+
+else {x .className = "topnav";
+	
+}
+
+}
+</
+script>#index {
 	position: absolute;
-	top: 0;
-	left: 0;
-}
-
-#index {
-	position: relative;
 	bottom: 0px;
 	margin-left: auto;
 	margin-right: auto;
 }
 
-/* #indexMenu {
-	position: relative;
-	bottom: 5px;
-	left: 0px;
-	text-align: center;
-} */
-
-#indexUl {
-	list-style-type: none;
-	margin: 0;
-	padding: 0;
+#indexBody {
+	background-image: url("skater.jpg");
+	background-position: 50% 50%; /* image centered on screen */
+	background-position: 50%; /* this also centers on screen */
+	background-position: 100px 100px;
+	background-position: top;
 }
-
-.indexLi {
+#viewAll{
 	display: block;
-	width: 200px;
-	background-color: #dddddd;
+	padding: 5%;
+	background_color: #b3b3b3;
+}
+#deck {
+	display: block;
+	background-color: #999999;
+	color: #505051;
+	
 }
 
-#remove {
+#topCont {
+	display: float left;
+	width: 100%;
+	background-color: #999999;
+	color: #333333;
+	
+}
+
+#container-viewAll1 {
+	float: left;
+	width: 30%;
+	background-color: #999999;
+	color: #333333;
+	
+	
+}
+
+#container-viewAll2 {
+	float: left;
+	width: 40%;
+	background-color: #cccccc;
+	color: #333333; 
+	
+}
+
+#container-viewAll3 {
+	float: left;
+	width: 30%;
+	background-color: #999999;
+	color: #333333
+
+} */
+#bForm{
+	background-image: url("skateboard.jpg");
+	background-position: 50% 50%; /* image centered on screen */
+	background-position: 50%; /* this also centers on screen */
+	background-position: 100px 100px;
+	background-position: top;
+}
+
+/* #remove {
 	position: fixed;
 	background-image: url("sick.jpeg");
 	background-opacity: 0.2;
@@ -106,66 +190,68 @@ li a {
 
 #build {
 	position: absolute;
-	/* 	background-image: url("throw.jpeg"); */
+		background-image: url("throw.jpeg");
 	background-repeat: no-repeat;
 }
 
  #viewAll {
 	display: block;
-	background-color: grey;
+	background-color: #999999;
 	color: #505051;
-	background-opacity: 0.2;
+	background-opacity: 0.8;
 }
-
-#viewAllDiv {
+ #deck {
 	display: block;
-	background-color: grey;
+	background-color: #999999;
+	color: #505051;
+	
+}
+#viewAllDiv {
+	border-style: grooved;
+	display: block;
+	background-color: #999999;
 	opacity: 0.8;
 	background-image: url("one.jpeg");
-	background-opacity: 0.2;
+	background-opacity: 0.9;
 	background-repeat: no-repeat;
 	background-size: 100% 100%;
 	background-position: bottom;
 	color: #333333;
 } 
-/* #OuterDiv{
-	background-image: url("one.jpeg");
-opacity:.2;
-width:300px;
-height:300px;
-}
-#InnerDiv{
-	width:300px;
-height:300px;
-position:absolute;
-top: 0;
-left:0;
-} */
+
 #topCont {
 	display: float left;
 	width: 100%;
-	background-color: grey;
-	color: #999999;
+	background-color: #999999;
+	color: #333333;
 }
 
 #container-viewAll1 {
 	float: left;
 	width: 30%;
-	background-color: grey;
-	color: #999999;
+	background-color: #999999;
+	color: #333333;
 		background-opacity: 0.2;
 }
 
 #container-viewAll2 {
 	float: left;
 	width: 40%;
-	background-color: grey;
-	color: #999999;
+	background-color: #999999;
+	color: #333333;
 }
 
 #container-viewAll3 {
 	float: right;
 	width: 30%;
-	background-color: grey;
-	color: #999999;
+	background-color: #999999;
+	color: #333333;
+} */
+#boards {
+	padding: 1px;
+	border: 2px inset #021a40;
+	position: center;
+	height: 250px;
+	width: 200px;
+	background-color: #e6e6e6;
 }

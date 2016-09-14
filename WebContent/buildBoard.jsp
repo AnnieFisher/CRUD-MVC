@@ -6,8 +6,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<link rel="stylesheet" type="text/css" href="CSSStyle/bootstrap.css">
-<link rel="stylesheet" type="text/css" href="CSSStyle/myCSS.css">
+<link rel="stylesheet" type="text/css" href="CSSStyle/myCSS.css"> 
+<link rel="stylesheet" type="text/css" href="CSSStyle/normalize.css">
+ <link rel="stylesheet" type="text/css" href="CSSStyle/skeleton.css"> 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Build Deck</title>
 </head>
@@ -38,8 +39,13 @@
 		<input type="submit" value="Submit" />
 	</form>
 
-	<li><a href="buildForm.html">Go Back To Select Different
-			Options</a></li>
-	<li><a href="index.html">Go To Start Page</a></li>
+	<ul class="topnav" id="myTopnav">
+			<li class="indexLi"><a href="GoToViewAll.do">View all available decks</a></li>
+			<li class="indexLi"><a href="buildForm.html">Build Your Skate Board</a></li>
+			<li class="indexLi"><a href="removeSetup.do">Remove a Setup</a></li>
+			<li class="indexLi"><a href="goToEditSetup.do">Edit a Setup</a></li>
+			<li class="icon">
+    <a href="javascript:void(0);" style="font-size:15px;" onclick="myFunction()">☰</a>
+  </li>
 </body>
 </html>

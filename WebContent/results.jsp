@@ -5,10 +5,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" type="text/css" href="CSSStyle/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="CSSStyle/myCSS.css"> 
+<link rel="stylesheet" type="text/css" href="CSSStyle/normalize.css">
+ <link rel="stylesheet" type="text/css" href="CSSStyle/skeleton.css"> 
 <title>View Setup</title>
 </head>
 <body>
+
 		<h2>Chosen Setup:</h2>
 		<table>
 		<tr><td><h3>DECK:</h3> ${deck.deckName}</td></tr>
@@ -17,52 +20,15 @@
 		<tr><td><h3>TRUCKS:</h3> ${truck.truckBrand}</td></tr>
 		</table>
 		<br/>
-		
-		<ul>
-		<li><a href="GoToViewAll.do">View all available decks</a><br/></li>
-		<li><a href="buildForm.html">Add another Setup</a></li> 
-		<li><a href="removeSetup.do">Remove an item from the List</a></li>
-		<li><a href="goToEditSetup.do">Edit an item from the List</a></li> 
-		<li><a href="index.html">Start Over</a></li> 
-		
-		</ul>
-		
-	    <table><th>DECKS</th>
-		<c:forEach var="deck" items="${decks}" varStatus="loop" >
-			<c:if test="${loop.index % 10 == 0}"> 
-			<tr><th>${deck.deckBrand}:</th></tr>
-			</c:if>
-			<td>${deck.deckName}</td>
-		</c:forEach>	
-	</table>
-	 <br>
-	 <div>
-	 <table><th>WHEELS</th>
-		<c:forEach var="wheel" items="${wheels}" >
-			<tr><td> Rank: ${wheel.wheelRank} </td>
-			<td>${wheel.wheelBrand} </td></tr>
-		</c:forEach>	
-	</table>
-	</div>
-	<br>
-	<div>
-	<table><th>BEARINGS</th>
-		<c:forEach var="bearing" items="${bearings}" >
-			<tr><td> Rank: ${bearing.bearingRank} </td>
-			<td>${bearing.bearingBrand} </td></tr>
-		</c:forEach>	
-	</table>
-	</div>
-	<br>
-	<div>
-	<table><th>TRUCKS</th>
-		<c:forEach var="truck" items="${trucks}" >
-			<tr><td> Rank: ${truck.truckRank} </td>
-			<td>${truck.truckBrand} </td></tr>
-		</c:forEach>	
-	</table>
-	</div>
-	
+			
+	<ul class="topnav" id="myTopnav">
+			<li class="indexLi"><a href="GoToViewAll.do">View all available decks</a></li>
+			<li class="indexLi"><a href="buildForm.html">Build Your Skate Board</a></li>
+			<li class="indexLi"><a href="removeSetup.do">Remove a Setup</a></li>
+			<li class="indexLi"><a href="goToEditSetup.do">Edit a Setup</a></li>
+			<li class="icon">
+    <a href="javascript:void(0);" style="font-size:15px;" onclick="myFunction()">☰</a>
+  </li>
 	
 </body>
 </html>
